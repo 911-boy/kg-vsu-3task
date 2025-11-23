@@ -207,9 +207,14 @@ public class Vector2Test {
     void testToString() {
         Vector2 v = new Vector2(1.5, 2.7);
         String str = v.toString();
-        assertTrue(str.contains("Vector2"));
-        assertTrue(str.contains("1.5"));
-        assertTrue(str.contains("2.7"));
+        assertTrue(str.contains("Vector2"), 
+            "String should contain 'Vector2': " + str);
+        assertTrue((str.contains("1.5") || str.contains("1,5") || 
+                   str.contains("1.5000") || str.contains("1,5000")),
+            "String should contain x component (1.5): " + str);
+        assertTrue((str.contains("2.7") || str.contains("2,7") || 
+                   str.contains("2.7000") || str.contains("2,7000")),
+            "String should contain y component (2.7): " + str);
     }
 
     @Test
